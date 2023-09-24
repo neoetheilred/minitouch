@@ -1,0 +1,17 @@
+services:
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    expose:
+    - "80"
+  redis:
+    image: redis
+    expose:
+    - "6379"
+  router:
+    image: nginx
+    ports:
+    - 80:80
+    volumes:
+    - ./router:/etc/nginx:ro
